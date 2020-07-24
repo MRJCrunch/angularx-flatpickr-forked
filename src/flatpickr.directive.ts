@@ -14,7 +14,8 @@ import {
 } from '@angular/core';
 import {
   FlatpickrDefaults,
-  DisableEnableDate
+  DisableEnableDate,
+  Position
 } from './flatpickr-defaults.service';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import flatpickr from 'flatpickr';
@@ -185,6 +186,11 @@ export class FlatpickrDirective
   @Input() parseDate: (str: string) => Date;
 
   /**
+   * Where the calendar is rendered relative to the input.
+   */
+  @Input() position?: Position
+
+  /**
    * HTML for the left arrow icon.
    */
   @Input() prevArrow: string;
@@ -340,6 +346,7 @@ export class FlatpickrDirective
       noCalendar: this.noCalendar,
       now: this.now,
       parseDate: this.parseDate,
+      position: this.position,
       prevArrow: this.prevArrow,
       shorthandCurrentMonth: this.shorthandCurrentMonth,
       showMonths: this.showMonths,

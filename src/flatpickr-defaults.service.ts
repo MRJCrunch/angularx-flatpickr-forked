@@ -6,6 +6,8 @@ export type DisableEnableDate =
   | { from: Date | string; to: Date | string }
   | ((date: Date) => boolean);
 
+export type Position = 'auto' | 'above' | 'below'
+
 // tslint:disable no-inferrable-types
 
 export interface FlatpickrDefaultsInterface {
@@ -142,6 +144,11 @@ export interface FlatpickrDefaultsInterface {
    * Function that expects a date string and must return a Date object.
    */
   parseDate?: (str: string) => Date;
+
+  /**
+   * Where the calendar is rendered relative to the input.
+   */
+  position?: Position
 
   /**
    * HTML for the left arrow icon.
@@ -346,6 +353,11 @@ export class FlatpickrDefaults implements FlatpickrDefaultsInterface {
    * Function that expects a date string and must return a Date object.
    */
   parseDate: (str: string) => Date;
+
+  /**
+   * Where the calendar is rendered relative to the input.
+   */
+  position: Position = 'auto'
 
   /**
    * HTML for the left arrow icon.
